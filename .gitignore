@@ -24,3 +24,6 @@ bin
 
 # CMakeLists.txt backup
 CMakeLists.txt_backup
+
+# .swp files from vim
+.*.swp
