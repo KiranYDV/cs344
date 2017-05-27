@@ -5,10 +5,19 @@
 # <email>   quantm@unist.ac.kr  kast.jo@googlemail.com msarahan@gmail.com</email>
 ############################################################################
 
+# required cmake version
+cmake_minimum_required(VERSION 3.5)
+
+# packages
+find_package(CUDA)
+find_package(OpenCV REQUIRED COMPONENTS core imgproc highgui imgcodecs)
+
 # collect source files
 
 file( GLOB  hdr *.hpp *.h )
 file( GLOB  cu  *.cu)
 SET (HW2_files main.cpp reference_calc.cpp compare.cpp)
-    
+
+include_directories(${OpenCV_INCLUDE_DIRS})
 CUDA_ADD_EXECUTABLE(HW2 ${HW2_files} ${hdr} ${cu})
+target_link_libraries(HW2 ${OpenCV_LIBS})
